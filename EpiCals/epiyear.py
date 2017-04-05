@@ -58,7 +58,7 @@ def printWeeks(file,weeks):
             w += repr(j).rjust(4)
         file.write((w + " <- Semana: {} \n").format(i))
 
-for z in range(2015,2016):
+for z in range(2000,2018):
     a = open(str(z)+".txt",'w')
     printWeeks(a,epiyear(z))# -> [[1,2],[3,4,5,6,7,8,9]...[25,26,27,28,29,30,31]]
 #epiyear(2016)
