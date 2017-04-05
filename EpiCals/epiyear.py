@@ -38,10 +38,12 @@ def epiyear(year):
         #print(theday,theday.weekday())
 
         if(theday.weekday()>5):
+            while(len(weeks[thisweek])<7):weeks[thisweek].insert(0," ")
             thisweek+=1
             weeks.append([])
         weeks[thisweek].append(theday.day)
         theday += aday
+    while(len(weeks[-1])<7):weeks[-1].append(" ")
     return weeks
 
 def printWeeks(file,weeks):
@@ -56,7 +58,7 @@ def printWeeks(file,weeks):
             w += repr(j).rjust(4)
         file.write((w + " <- Semana: {} \n").format(i))
 
-for z in range(2002,2017):
+for z in range(2015,2016):
     a = open(str(z)+".txt",'w')
     printWeeks(a,epiyear(z))# -> [[1,2],[3,4,5,6,7,8,9]...[25,26,27,28,29,30,31]]
 #epiyear(2016)
