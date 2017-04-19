@@ -31,7 +31,7 @@ def epiyear(year):
     weeks.append([])
 
     #print(theday.weekday)
-    if(theday.weekday<=1):thisweek=1
+    if(theday.weekday<=2):thisweek=1
     else: thisweek = 0
 
     while(theday<=datetime.date(year,12,31)):#datetime.date(year,1,10).days):
