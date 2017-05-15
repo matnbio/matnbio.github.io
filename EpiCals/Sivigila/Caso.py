@@ -16,7 +16,7 @@ book = xlrd.open_workbook('data/Dengue Bello 2014.xls')
 sh = book.sheet_by_index(0)
 
 cases = {}
-wrong = {}
+D = {}
 
 def get_epiweek(case):
     theday = datetime.date(case.year,1,1)
