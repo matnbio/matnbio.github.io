@@ -3,9 +3,11 @@ require 'roo'
 require 'roo-xls'
 
 def last_week_year(date)  # devuelve la ultima semana epidemiologica de ese año.
-  date = Date.new(date.year-1) unless (date.mon==12)
-  puts "Hola #{date}"
-  (((date-first_epi_week(date))/7).to_i)+1
+  newdate = Date.new(date.year-1) unless (date.mon==12)
+  #puts first_epi_week(newdate.year)
+  dias = (date-first_epi_week(newdate.year)).to_i
+  #puts dias
+  (dias/7)+1
 end
 
 def first_epi_week(year)
@@ -30,20 +32,21 @@ def next_sat(date)
 end
 
 def get_epi_week(thedate)
-
   thisSat = next_sat(thedate)
-  puts thisSat
+  #puts thisSat
   if first_epi_week?(thisSat)
     last_week_year(thedate)
+  elsif thisSat < first_epi_week(thedate.year)
+    last_week_year(thisSat)
+  else
+    week = 1
+    thisSat = first_epi_week(thedate.year)
+    while thedate > thisSat
+      thisSat = next_week(thisSat)
+      week+=1
+    end
+    week
   end
-
-  week = 1
-  thisSat = first_epi_week(thedate.year)
-  while thedate > thisSat
-    thisSat = next_week(thisSat)
-    week+=1
-  end
-  week
 end
 
 
